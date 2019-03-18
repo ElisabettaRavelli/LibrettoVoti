@@ -7,12 +7,14 @@ public class Voto {
 	private int punti;
 	private String corso;
 	private LocalDate data; //Date oppure Calendar per le date prima di java 7
+	
 	public Voto(int voto, String corso, LocalDate data) {
 		super();
 		this.punti = voto;
 		this.corso = corso;
 		this.data = data;
 	}
+	
 	public int getPunti() {
 		return punti;
 	}
@@ -55,7 +57,7 @@ public class Voto {
 		if (corso == null) {
 			if (other.corso != null)
 				return false;
-		} else if (!corso.equals(other.corso))
+		} else if (!corso.equals(other.corso)) //non è il caso di una ricorsione 
 			return false;
 		return true;
 	}
