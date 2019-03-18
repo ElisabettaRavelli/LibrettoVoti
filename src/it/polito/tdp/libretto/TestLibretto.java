@@ -22,10 +22,11 @@ public class TestLibretto {
 		List<Voto> venticinque = libr.cercaVoti(25);
 		System.out.println(venticinque);
 		
-		Voto a1 = libr.cercaEsame("Analisi I");
+		Voto a1 = libr.cercaEsame("Analisi I"); // cerco Analisi I
 		Voto a2 = libr.cercaEsame("Analisi III");
 		System.out.println(a1);
 		System.out.println(a2);
+		
 		
 	}
 
