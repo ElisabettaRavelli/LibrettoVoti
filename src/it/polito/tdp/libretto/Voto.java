@@ -62,6 +62,8 @@ public class Voto {
 		return true;
 	}
 	
-	
+	public Voto clone() { //metodo che clona un oggetto di un'altra classe (factory è un metodo che crea oggetti)
+		return new Voto(this.punti, this.corso, this.data);
+	}
 
 }

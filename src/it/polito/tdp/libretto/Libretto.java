@@ -106,7 +106,37 @@ public class Libretto {
 		}
 		
 	}
-		public String toString() {
+	public String toString() {
 			return this.voti.toString();
+	}
+		
+	public Libretto LibrettoMigliorato() {
+		Libretto nuovo = new Libretto(); //creo un nuovo oggetto a cui aggiungerci i voti esistenti
+		for(Voto v: this.voti) {
+			nuovo.add(v.clone());
 		}
+		//sul libretto nuovo incremento i voti di 1
+		for(Voto v: this.voti) {
+			int punti = v.getPunti();
+			if(punti<24)
+				punti=punti+1;
+			else if(punti<28)
+				punti= punti+2;
+			
+			v.setPunti(punti);
+		}
+		return nuovo;
+	}
+	
+	//non si può eliminare un elemento della lista durante una iterazione
+	public void cancellaVotiScarsi() {
+		List<Voto> cancellare = new ArrayList<Voto>();
+		for(Voto v: this.voti) {
+			if(v.getPunti()<24) {
+				cancellare.add(v);
+			}
+		}
+	
+	 this.voti.removeAll(cancellare);
+}
 }
