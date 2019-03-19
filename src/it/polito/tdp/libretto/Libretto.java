@@ -50,12 +50,13 @@ public class Libretto {
 	
 	public Voto cercaEsame(String nomeEsame) {
 		
-		for(Voto v: this.voti) {
-			if(v.getCorso().equals(nomeEsame)) {
-				return v;
-			}
-		}
-	 return null; }
+		Voto voto = new Voto(0, nomeEsame, null); //creazione di un oggetto voto incompleto necessario per fare la ricerca 
+		int pos = this.voti.indexOf(voto); //metodo già esistente indexOf per andare a cercare un oggetto (voto definito sopra) 
+		if(pos==-1)
+			return null; 
+		else 
+			return this.voti.get(pos);
+	}
 	
 	/**
 	 * Dato un {@link Voto} determina se esiste già un voto con uguale corso e punteggio
@@ -65,6 +66,14 @@ public class Libretto {
 	 */
 	
 	public boolean esisteGiaVoto(Voto v) {
+		int pos = this.voti.indexOf(v);
+		if(pos==-1)
+			return false;
+		else {
+			return v.getPunti() == this.voti.get(pos).getPunti();
+				}
+		
+		/* MEDOTO DIVERSO CHE NON USA UN METODO GIA' ESISTENTE
 		Voto trovato = this.cercaEsame(v.getCorso()); //il metodo cercaEsame mi restituisce l'esame uguale
 		if(trovato==null)
 			return false;
@@ -72,7 +81,7 @@ public class Libretto {
 			return true;
 		} else {
 			return false;
-		}
+		}*/
 		
 	}
 }
