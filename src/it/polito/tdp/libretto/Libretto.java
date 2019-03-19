@@ -19,9 +19,14 @@ public class Libretto {
 	/**
 	 * Aggiunge un nuovo voto al libretto
 	 * @param v {@link Voto} da aggiungere
+	 * @return {@code true} nel caso normale, {#code false} 
 	 */
 	public void add(Voto v) {
-		voti.add(v);
+		if(!this.esisteGiaVoto(v)&& !this.votoConflitto(v)) {
+			voti.add(v);
+		} else {
+			
+		}
 	}
 	
 	
@@ -84,4 +89,24 @@ public class Libretto {
 		}*/
 		
 	}
+	
+	
+	/**
+	 * Mi dice se il {@link Voto} {code v} è in conflitto con uno dei voti esistenti. 
+	 * Se il voto non esiste non c'è conflitto, se esiste !!!!DA CONCLUDERE!!!
+	 * @param v
+	 * @return
+	 */
+	public boolean votoConflitto (Voto v) {
+		int pos = this.voti.indexOf(v);
+		if(pos==-1)
+			return false;
+		else {
+			return v.getPunti() == this.voti.get(pos).getPunti();
+		}
+		
+	}
+		public String toString() {
+			return this.voti.toString();
+		}
 }
